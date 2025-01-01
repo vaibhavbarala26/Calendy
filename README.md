@@ -36,3 +36,7 @@ cd Calendy
 ```bash
 npm Install
 ```
+***4.Run the Server***
+```bash
+npm run dev
+```
