@@ -3,7 +3,7 @@ import { MdEvent } from "react-icons/md";
 
 import "../App.css";
 
-// Define the Event interface to represent the event data structure
+// Define the Event interface to represent the events data structure
 interface Event {
   name: string;
   description: string;
@@ -28,16 +28,15 @@ const Header = () => {
   const { events } = useEventContext();
   console.log(events);
 
-  // Retrieve individual event data from EventContext
-  const { event } = useEventContext();
-
-  // State to store event data
+  // Retrieve individual events data from EventContext
+  
+  // State to store events data
   const [data, setData] = useState<Event[] | null>([]);
 
-  // Effect to update the data state whenever `event` changes
+  // Effect to update the data state whenever `events` changes
   useEffect(() => {
-    setData(event);
-  }, [event]);
+    setData(events);
+  }, [events]);
 
   return (
     <div className="px-8 p-2 flex flex-col font-noto">
