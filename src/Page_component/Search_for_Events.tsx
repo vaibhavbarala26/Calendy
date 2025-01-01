@@ -16,7 +16,7 @@ interface Event{
   }
 
 const Search_for_Events = () => {
-    //const {events}:Event[] = useEventContext()
+    const {events}:Event[] = useEventContext()
     const [data , setData] = useState<Event[]>([])
     const [input , setInput] = useState("")
     const handleSubmit = () => {

@@ -101,7 +101,7 @@ export const EventProvider:React.FC<{children:React.ReactNode}> = ({children})=>
         </EventContext.Provider>
       );
 }
-export const useEventContext = ():EventContexType =>{
+export const useEventContext = ():EventContextType =>{
     const context = useContext(EventContext);
     if(!context){
         throw new Error("error")

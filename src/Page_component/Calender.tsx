@@ -26,7 +26,7 @@ const Calendar = () => {
   const npw = new Date();
 
   // State to manage selected day
-  const [selected_day, setSelected_day] = useState<string>(npw.getDate().toString());
+  const [selected_day, setSelected_day] = useState<number>(npw.getDate());
 
   // State to manage selected month
   const [selected_month, setSelected_month] = useState<string>("February");
@@ -82,10 +82,10 @@ const Calendar = () => {
             {/* Days of the Month */}
             {days.map((day, index) => (
               <div
-                key={index}
-                onClick={() => { setSelected_day(day); SetOpen(true); }}
-                className={`p-1 ${selected_day === day ? "bg-black text-white" : ""} border rounded-md hover:bg-gray-200 cursor-pointer`}
-              >
+              key={index}
+              onClick={() => { setSelected_day(day); SetOpen(true); }}
+              className={`p-1 ${selected_day === day ? "bg-black text-white" : ""} border rounded-md hover:bg-gray-200 cursor-pointer`}
+            >
                 {day}
               </div>
             ))}
@@ -95,12 +95,12 @@ const Calendar = () => {
 
       {/* Input Card Section */}
       <div>
-        <Input_Card
-          open={open}
-          day={selected_day}
-          month={currentDate.toLocaleString('default', { month: 'long' })}
-          setOpen={SetOpen}
-        />
+      <Input_Card
+  open={open}
+  day={selected_day.toString()} // Convert to string
+  month={currentDate.toLocaleString('default', { month: 'long' })}
+  setOpen={SetOpen}
+/>
       </div>
     </div>
   );
