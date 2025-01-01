@@ -16,6 +16,7 @@ interface Event {
 const DraggableEventTable = () => {
   const { events } = useEventContext(); // Get events from context
   const [event, setEvent] = useState<Event[] | null>([]); // Local state for events
+  const [hoveredEventId, setHoveredEventId] = useState<string | null>(null); // Track hovered event
 
   // List of months for comparison with event months
   const months = [
@@ -74,7 +75,7 @@ const DraggableEventTable = () => {
   const daysInMonth = Array.from({ length: 31 }, (_, index) => (index + 1).toString());
 
   return (
-    <div className="p-4 max-w-4xl mx-auto bg-white shadow rounded-md">
+    <div className="px-4 max-w-[300px] mx-auto bg-white shadow rounded-md">
       <h1 className="text-xl font-bold mb-4">Current Month's Events</h1>
 
       {/* Event Table */}
@@ -98,6 +99,8 @@ const DraggableEventTable = () => {
                 onDragStart={(e) => eventForDay && handleDragStart(e, eventForDay.id)}
                 onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, day)}
+                onMouseEnter={() => setHoveredEventId(eventForDay?.id || null)} // Set hovered event
+                onMouseLeave={() => setHoveredEventId(null)} // Clear hovered event
               >
                 <td className="p-2 text-center">{day}</td>
                 <td
@@ -109,9 +112,16 @@ const DraggableEventTable = () => {
                       : eventForDay?.importance === "other"
                       ? "bg-blue-600"
                       : ""
-                  }`}
+                  } w-2/3`}
                 >
                   {eventForDay ? eventForDay.name : "NA"}
+
+                  {/* Show description on hover */}
+                  {hoveredEventId === eventForDay?.id && eventForDay && (
+                    <div className="mt-2 text-sm text-gray-600">
+                      <p>{eventForDay.description}</p>
+                    </div>
+                  )}
                 </td>
               </tr>
             );
