@@ -62,7 +62,7 @@ const Input_Card: React.FC<InputCardProp> = ({ open, day, month, setOpen }) => {
   console.log(events);
 
   // Handle form submission
-  const HandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const HandleSubmit = (e:  React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     // Create an event object

@@ -1,7 +1,6 @@
 import React from "react";
 import { useEventContext } from "../Context/EventContext";
-import { Button } from "@/components/ui/Button";
-
+import { Button } from "@/components/ui/button";
 // Define the Event interface to represent event data
 interface Event {
   name: string;

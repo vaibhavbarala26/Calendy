@@ -10,8 +10,30 @@ interface Event{
     id:string
     importance:string
   }
-
-const EventContext = createContext()
+  interface EventContextType {
+    events: Event[];
+    addEvent: (
+      day: string,
+      newEvent: Event,
+      month: string,
+      startTime: string,
+      endTime: string
+    ) => string | void;
+    deleteEvent: (id: string) => void;
+    EditEvent: (
+      day: string,
+      month: string,
+      startTime: string,
+      endTime: string,
+      id: string,
+      name: string,
+      description: string,
+      importance: string
+    ) => void;
+  }
+  
+  const EventContext = createContext<EventContextType | undefined>(undefined);
+  
 export const EventProvider:React.FC<{children:React.ReactNode}> = ({children})=>{
     const [events , setEvent] = useState<Event[]>(()=>{
         const stored = localStorage.getItem("events")

@@ -26,7 +26,7 @@ const Calendar = () => {
   const npw = new Date();
 
   // State to manage selected day
-  const [selected_day, setSelected_day] = useState<number>(npw.getDate());
+  const [selected_day, setSelected_day] = useState<string>(npw.getDate().toString());
 
   // State to manage selected month
   const [selected_month, setSelected_month] = useState<string>("February");
